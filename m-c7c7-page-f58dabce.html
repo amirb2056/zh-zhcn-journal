@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>c7c7.app · 简明使用说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f3f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.65;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    /* hero 区 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.8rem 2.2rem 2.2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      border: 1px solid #e9edf2;
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .hero:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .hero h1 {
+      font-weight: 550;
+      font-size: 2.1rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.65rem;
+      color: #0f172a;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #334155;
+      max-width: 640px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      border-top: 1px solid #eef2f6;
+      padding-top: 1.2rem;
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* 卡片通用 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem 1.6rem;
+      border: 1px solid #e6eaef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.035);
+    }
+
+    .card h3 {
+      font-weight: 570;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      padding: 0.35rem 0 0.35rem 1.25rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    /* 提示与FAQ组合区 */
+    .notice-faq {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .notice-box, .faq-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.5rem 1.5rem;
+      border: 1px solid #e6eaef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .notice-box h3, .faq-box h3 {
+      font-weight: 570;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #0f172a;
+    }
+
+    .notice-box p, .faq-box p {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 550;
+      font-size: 0.95rem;
+      color: #1e293b;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item span {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .link-sentence {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      border: 1px solid #e6eaef;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .link-sentence a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 520;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .link-sentence a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.82rem;
+      color: #64748b;
+      padding: 1rem 0 0.5rem;
+      border-top: 1px solid #dde2e9;
+      margin-top: 1rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      body { padding: 1.2rem; }
+      .hero { padding: 2rem 1.2rem 1.6rem; }
+      .hero h1 { font-size: 1.7rem; }
+      .notice-faq { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .link-sentence { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero 简明指南 -->
+  <div class="hero">
+    <h1>c7c7 — 简明访问说明</h1>
+    <p>一套聚焦效率的工具型服务，适用于需要快速获取信息与轻量操作的场景。以下从使用方式、核心亮点、注意事项三个维度提供参考。</p>
+    <div class="meta-line">
+      <span>📌 服务定位 · 轻量 · 工具向</span>
+      <span>🔒 建议使用标准浏览器</span>
+      <span>⚡ 无多余注册流程</span>
+    </div>
+  </div>
+
+  <!-- 亮点卡片 grid -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>📋 使用建议</h3>
+      <ul>
+        <li>优先在桌面端或平板浏览器中打开，布局适配更完整</li>
+        <li>无需安装额外插件，主流浏览器均可直接操作</li>
+        <li>如遇加载异常，可尝试刷新或更换网络环境</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚙️ 场景示例</h3>
+      <ul>
+        <li>快速查阅分类索引与摘要内容</li>
+        <li>对比不同条目下的结构化信息</li>
+        <li>日常轻量检索，减少无关信息干扰</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🧩 界面特点</h3>
+      <ul>
+        <li>卡片式布局，重点信息分层展示</li>
+        <li>搜索与筛选响应及时，操作反馈直接</li>
+        <li>配色克制，降低长时间使用的视觉疲劳</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 提示 + FAQ 两列 -->
+  <div class="notice-faq">
+    <div class="notice-box">
+      <h3>📎 访问提醒</h3>
+      <p>请通过官方地址访问，注意核对域名拼写。服务不存储用户个人数据，浏览过程中不会主动索取任何权限。</p>
+      <p>建议关闭 VPN 或代理后再尝试加载，部分节点可能影响连接稳定性。若遇到页面样式异常，可清除浏览器缓存后重试。</p>
+    </div>
+    <div class="faq-box">
+      <h3>❓ 常见疑问</h3>
+      <div class="faq-item">
+        <strong>是否需要注册？</strong>
+        <span>无需创建账号，直接使用浏览器打开即可。</span>
+      </div>
+      <div class="faq-item">
+        <strong>移动端兼容吗？</strong>
+        <span>支持主流移动浏览器，但部分复杂排版建议横屏使用。</span>
+      </div>
+      <div class="faq-item">
+        <strong>内容更新频率？</strong>
+        <span>保持定期维护，具体以实际页面显示为准。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然嵌入链接的句子 -->
+  <div class="link-sentence">
+    <p>若希望进一步了解具体功能，可直接前往 <a href="https://m-c7c7.com">c7c7.app</a> 浏览完整页面，所有说明均以线上内容为准。</p>
+  </div>
+
+  <!-- 简短场景补充，丰富信息密度 -->
+  <div class="card" style="margin-bottom: 1.2rem;">
+    <h3>📌 使用场景补充</h3>
+    <p style="margin-bottom: 0.4rem;">适合在需要快速查阅特定分类资料、对比简短说明或进行轻量信息筛选时使用。整体界面围绕“低干扰”设计，尽量减少非必要元素。</p>
+    <p>建议搭配1200px以上宽度的屏幕获得最佳浏览体验，同时保持浏览器为最新版本。</p>
+  </div>
+
+  <div class="footer-note">
+    c7c7 · 产品说明页 · 信息仅供参考
+  </div>
+
+</div>
+</body>
+</html>
